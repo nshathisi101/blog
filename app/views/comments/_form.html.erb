@@ -1,19 +1,16 @@
 <%= form_with model: [ @article, @article.comments.build ] do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
+  <div class="p-6 space-y-6">  
 
-    <p>
-      <%= form.label :status %><br>
-      <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-    </p>
+  <%= form.hidden_field :commenter, value: current_user.email%>
+  <%= form.hidden_field :status, value: 'public'%>
+  
+ <div class="col-span-6">
+    <%= form.label :body,class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"  %><br>
+    <%= form.text_area :body , class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" %>
+  </div>
+     </div>
 
-  <p>
-    <%= form.submit %>
-  </p>
+<div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
+    <%= form.submit class: "inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 sm:ml-3 focus:ring-offset-2"%>
+  </div>
 <% end %>

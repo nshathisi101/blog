@@ -1,17 +1,52 @@
-<% unless comment.archived? %>
-  <p>
+<%# <% unless comment.archived? %>
+ <%# <p>
     <strong>Commenter:</strong>
     <%= comment.commenter %>
-  </p>
+ <%# </p>
 
   <p>
     <strong>Comment:</strong>
     <%= comment.body %>
-  </p>
+<%#  </p>
   <p>
     <%= link_to "Destroy Comment", [comment.article, comment], data: {
                   turbo_method: :delete,
                   turbo_confirm: "Are you sure?"
                 } %>
-  </p>
+ <%# </p>
 <% end %>
+
+<% unless comment.archived? %>
+<li class="py-3 sm:py-4">
+                <div class="flex items-center space-x-4">
+                    <div class="flex-shrink-0">
+                        <img src="https://stackdiary.com/140x100.png" alt="Author Photo" class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"> 
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                           <%= comment.commenter %>
+                        </p>
+                        <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                            <%=comment.body %>
+                        </p>
+                    </div>
+                    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                             <%= button_to  [comment.article, comment], data: {
+                                              turbo_method: :delete,
+                                              turbo_confirm: "Are you sure?"
+                                            } ,  class: "flex mr-3 space-x-2 items-center px-3 py-2 bg-rose-500 hover:bg-rose-800 rounded-md drop-shadow-md" do %>
+                                        <svg class="fill-white" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
+                                            viewBox="0 0 24 24">
+                                            <path
+                                                d="M 10 2 L 9 3 L 3 3 L 3 5 L 21 5 L 21 3 L 15 3 L 14 2 L 10 2 z M 4.3652344 7 L 5.8925781 20.263672 C 6.0245781 21.253672 6.877 22 7.875 22 L 16.123047 22 C 17.121047 22 17.974422 21.254859 18.107422 20.255859 L 19.634766 7 L 4.3652344 7 z">
+                                            </path>
+                                        </svg>
+                                  <%end %>
+                    </div>
+                </div>
+            </li>
+
+<% end %>
+
+
+

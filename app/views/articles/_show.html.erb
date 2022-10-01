@@ -1,0 +1,18 @@
+
+<div class="w-full">
+<div class=" flex flex-col justify-center center-item bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+
+
+    
+<%= render 'articles/card_view', article: @article %>
+<div class="overflow-y-auto h-72 relative w-full  mx-auto bg-white dark:bg-slate-800 dark:highlight-white/5 shadow-lg ring-1 ring-black/5 rounded-xl flex flex-col divide-y dark:divide-slate-200/5">
+    
+<h2>Comments</h2>
+<%= render @article.comments %>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+
+  </div>
+</div>
+</div>

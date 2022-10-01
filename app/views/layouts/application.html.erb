@@ -11,9 +11,24 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+ <body class="shadow dark:bg-gray-700">
+  <%= render 'layouts/header' %>
+    <main class="container flex justify-center item-center">
+    <%= render 'articles/model' %>
       <%= yield %>
     </main>
+      <script>
+// set the modal menu element
+ function toggleModal(modalID){
+      document.getElementById(modalID).classList.toggle("hidden");
+    var me=document.getElementById(modalID + "-backdrop");
+    console.log(modalID + "-backdrop")
+    me.classList.toggle("hidden");
+    document.getElementById(modalID).classList.toggle("flex");
+    document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+ }
+
+
+</script>
   </body>
 </html>
