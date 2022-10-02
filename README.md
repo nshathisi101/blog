@@ -22,3 +22,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+<img src="https://bkit.co/w_6339eb11445e8.gif" />
