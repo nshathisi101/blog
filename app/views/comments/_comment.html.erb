@@ -1,22 +1,6 @@
-<%# <% unless comment.archived? %>
- <%# <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
- <%# </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-<%#  </p>
-  <p>
-    <%= link_to "Destroy Comment", [comment.article, comment], data: {
-                  turbo_method: :delete,
-                  turbo_confirm: "Are you sure?"
-                } %>
- <%# </p>
-<% end %>
 
 <% unless comment.archived? %>
+
 <li class="py-3 sm:py-4">
                 <div class="flex items-center space-x-4">
                     <div class="flex-shrink-0">
@@ -24,17 +8,17 @@
                     </div>
                     <div class="flex-1 min-w-0">
                         <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                           <%= comment.commenter %>
+                         <%= comment.commenter %>
                         </p>
                         <p class="text-sm text-gray-500 truncate dark:text-gray-400">
                             <%=comment.body %>
                         </p>
                     </div>
                     <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                             <%= button_to  [comment.article, comment], data: {
+                             <%= link_to  [comment.article, comment], data: {
                                               turbo_method: :delete,
                                               turbo_confirm: "Are you sure?"
-                                            } ,  class: "flex mr-3 space-x-2 items-center px-3 py-2 bg-rose-500 hover:bg-rose-800 rounded-md drop-shadow-md" do %>
+                                            }  ,  class: "flex mr-3 space-x-2 items-center px-3 py-2 bg-rose-500 hover:bg-rose-800 rounded-md drop-shadow-md" do %>
                                         <svg class="fill-white" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
                                             viewBox="0 0 24 24">
                                             <path
@@ -47,6 +31,7 @@
             </li>
 
 <% end %>
+
 
 
 

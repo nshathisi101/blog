@@ -3,6 +3,11 @@ class CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     @comment = @article.comments.create(comment_params)
     @comment.save
+    turbo_stream.replace("private_comments" , 
+          partial: "comments/comment",
+          locals:{
+            comment: article_path(@article), status: :see_other
+        })
     redirect_to article_path(@article), status: :see_other
   end
 
