@@ -8,12 +8,16 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <%= javascript_importmap_tags %>
   </head>
 
  <body class="shadow dark:bg-gray-700">
   <%= render 'layouts/header' %>
-    <main class="container flex justify-center item-center">
+   <% if notice %>
+        <%= render 'layouts/alerts'%>
+      <% end %>
+    <main class="flex justify-center item-center">
     <%= render 'articles/model' %>
       <%= yield %>
     </main>
@@ -26,6 +30,31 @@
     me.classList.toggle("hidden");
     document.getElementById(modalID).classList.toggle("flex");
     document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+ }
+
+ function hideAlert(){
+  const targetEl = document.getElementById('alert-border-4');
+
+var Dismiss=function(a,b){
+b.hide();
+}
+// options object
+const options = {
+  triggerEl: document.getElementById('alert-border-4'),
+  transition: 'transition-opacity',
+  duration: 1000,
+  timing: 'ease-out',
+
+  // callback functions
+  onHide: (context, targetEl) => {
+    console.log('element has been dismissed')
+    console.log(targetEl)
+  }
+};
+const dismiss = new Dismiss(targetEl, options);
+
+
+
  }
 
 
