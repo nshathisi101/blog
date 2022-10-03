@@ -7,10 +7,10 @@
     <%= content_tag(:div, id: articles_channel) do %>
       <% @articles.each do |article| %>
        <% unless article.archived? %>
-      <% if current_user %>
-        <%= render  "articles/card_view",article: article  %>
+      <% if article.user == current_user %>
+        <%= render  "articles/card_view",article: article %>
       <% else %>
-        <%= render "articles/card_view", article: article %>
+        <%= render "articles/card_view_public", article: article %>
       <% end %>
       <% end %>
       <% end %>

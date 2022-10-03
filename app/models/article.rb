@@ -23,11 +23,11 @@ class Article < ApplicationRecord
         broadcast_prepend_later_to 'public_articles',
                                     target: 'public_articles',
                                     partial: 'articles/card_view',
-                                    locals: { article: self, join_status: false,current_user: current_user }
+                                    locals: { article: self,current_user: false }
         broadcast_prepend_later_to 'private_articles',
                                     target: 'private_articles',
                                     partial: 'articles/card_view',
-                                    locals: { article: self, join_status: false,current_user: current_user }
+                                    locals: { article: self, current_user: false }
       end
     
       def broadcast_updated_article
@@ -37,11 +37,11 @@ class Article < ApplicationRecord
         broadcast_replace_later_to 'public_articles',
                                     target: shared_target_article,
                                     partial: 'articles/card_view',
-                                    locals: { article: self,join_status: false, current_user: current_user }
+                                    locals: { article: self, current_user: false }
         broadcast_replace_later_to "private_articles",
                                     target: shared_target_article,
                                     partial: 'articles/card_view',
-                                    locals: { article: self, join_status: false, current_user: current_user }
+                                    locals: { article: self, current_user: false }
       end
   
     
