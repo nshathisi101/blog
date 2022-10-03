@@ -8,7 +8,6 @@
             
              <%= render 'comments/form' %>
         
-            <% @article.comments.each do |comment| %>
             <div class="p-4 w-full bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                 <div class="flex justify-between items-center mb-4">
                     <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Comments</h5>
@@ -19,7 +18,7 @@
                   <div class="overflow-y-auto h-72 relative w-full  mx-auto bg-white dark:bg-slate-800 dark:highlight-white/5 shadow-lg ring-1 ring-black/5 rounded-xl flex flex-col divide-y dark:divide-slate-200/5">    
                     <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
                     
-                        <%= render "comments/comment", comment: comment %>
+                        <%= render @article.comments %>
                    
 
                     </ul>
@@ -27,7 +26,6 @@
               </div>
                
             </div>
-            <%end%>
 
        
 
